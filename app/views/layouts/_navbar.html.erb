@@ -12,12 +12,21 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">マイスケジュール</a></li>
-					<li><a href="#">マイスキル</a></li>
-					<li><a href="#">シフト提出</a></li>
-					<li><a href="#">パスワード変更</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">ログアウト</a></li>
+					<% if logged_in? %>
+						<li class="dropdown">
+							<a hred="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">マイスケジュール</a></li>
+								<li><a href="#">マイスキル</a></li>
+								<li><a href="#">シフト提出</a></li>
+								<li><a href="#">パスワード変更</a></li>
+								<li role="separator" class="divider"></li>
+								<li><%= link_to "ログアウト", logout_path
+							</ul>
+						</li>
+					<% else %>
+						<li><%= link_to "ログイン", login_path %></li>
+					<% end %>
 				</ul>
 			</div>
 		</div>

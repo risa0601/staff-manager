@@ -1,6 +1,8 @@
 <div class="center jumbotron">
 	<div class="text-center">
 		<h1>スタッフ専用ページ</h1>
-		<a href="" class="btn btn-primary btn-lg">ログイン</a> 
+			<% unless logged_in? %>
+				<%= link_to "ログイン", login_path, class: "btn btn-primary" %>
+			<% end %>
 	</div>
 </div>
