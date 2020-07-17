@@ -9,4 +9,6 @@ class User < ApplicationRecord
   validates :trip, length: { maximum: 255 }
   validates :party_type, length: { maximum: 255 }
   
+  has_many :shifts
+  
 end
