@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200717053152) do
+ActiveRecord::Schema.define(version: 20200718090638) do
+
+  create_table "having_skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_having_skills_on_skill_id", using: :btree
+    t.index ["user_id", "skill_id"], name: "index_having_skills_on_user_id_and_skill_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_having_skills_on_user_id", using: :btree
+  end
 
   create_table "shifts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date     "date"
@@ -19,6 +29,14 @@ ActiveRecord::Schema.define(version: 20200717053152) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["user_id"], name: "index_shifts_on_user_id", using: :btree
+  end
+
+  create_table "skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "skill_name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_skills_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -33,5 +51,8 @@ ActiveRecord::Schema.define(version: 20200717053152) do
     t.datetime "updated_at",                       null: false
   end
 
+  add_foreign_key "having_skills", "skills"
+  add_foreign_key "having_skills", "users"
   add_foreign_key "shifts", "users"
+  add_foreign_key "skills", "users"
 end
