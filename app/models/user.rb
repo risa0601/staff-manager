@@ -10,6 +10,15 @@ class User < ApplicationRecord
   validates :party_type, length: { maximum: 255 }
   
   has_many :shifts
-  has_many :skills
+  has_many :skills, through: :having_skills
+  has_many :having_skills
+  has_many :parties, through: :shift_dicisions
+  has_many :shift_dicisions
   
 end
+
+
+
+
+
+
