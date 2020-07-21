@@ -1,8 +1,11 @@
-<div class="center jumbotron">
-	<div class="text-center">
-		<h1>スタッフ専用ページ</h1>
-			<% unless logged_in? %>
-				<%= link_to "ログイン", login_path, class: "btn btn-primary" %>
-			<% end %>
+<% if logged_in? %>
+	<%= render "layouts/navbar" %>
+	<h2><%= current_user.name %>さんのマイページ</h2>
+<% else %>
+	<div class="center jumbotron">
+		<div class="text-center">
+			<h1>スタッフ専用ページ</h1>
+			<%= link_to "ログインする", login_path, class: "btn btn-primary" %>
+		</div>
 	</div>
-</div>
+<% end %>

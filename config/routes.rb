@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   
   root to: "toppages#index"
   
-  get "users/:id/skill", to: "users#skill"
+
   post "users", to: "users#create"
   get "users/new", to: "users#new"
-  get "users/:id", to: "users#schedule"
+  get "users/:id/schedule", to: "users#schedule"
   delete "users/:id", to: "users#destroy"
   get "users/:id/shift", to: "users#shift"
+  get "users/:id/skill", to: "users#skill"
   
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"

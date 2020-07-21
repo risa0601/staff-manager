@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
+  skip_before_filter :require_login, except: [:destroy]
+  
   def new
   end
 
   def create
-    @user = login(params[:starr_no], params[:password])
+    @user = login(login_params[:staff_no], login_params[:password])
     if @user
       flash[:success] = "ログインしました"
       redirect_back_or_to(root_path)
@@ -16,6 +18,13 @@ class SessionsController < ApplicationController
   def destroy
     logout
     flash[:success] = "ログアウトしました"
-    redirect_to login_path
+    redirect_to root_url
   end
+  
+  private
+  
+  def login_params
+    params.require(:session).permit(:staff_no, :password)
+  end
+
 end

@@ -1,2 +1,21 @@
-<h1>Users#schedule</h1>
-<p>Find me in app/views/users/schedule.html.erb</p>
+	<%= render "layouts/navbar" %>
+	<h4><%= current_user.name %>さん</h4>
+	<h2>マイスケジュール</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>日付</th>
+				<th>開始時間</th>
+				<th>最寄り駅</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @parties.each do |party| %>
+			<tr>
+				<td></td>
+				<td><%= party.party_start %></td>
+				<td><%= party.station %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>

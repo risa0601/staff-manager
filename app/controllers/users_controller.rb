@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def schedule
+    @user = User.find(params[:id])
+    @parties = Party.all
   end
 
   def skill
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = "スタッフの登録が完了しました"
-      redirect_to @user
+      redirect_to root_path
     else
       flash[:danger] = "スタッフの登録に失敗しました"
       render :new
