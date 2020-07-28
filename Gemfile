@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sorcery'
 
 gem 'simple_calendar', '~> 2.0'
+
+gem 'font-awesome-sass', '~> 5.4.1'

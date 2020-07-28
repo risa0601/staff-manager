@@ -4,15 +4,13 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>日付</th>
-				<th>開始時間</th>
+				<th>日時</th>
 				<th>最寄り駅</th>
 			</tr>
 		</thead>
 		<tbody>
 		<% @parties.each do |party| %>
 			<tr>
-				<td></td>
 				<td><%= party.party_start %></td>
 				<td><%= party.station %></td>
 			</tr>
