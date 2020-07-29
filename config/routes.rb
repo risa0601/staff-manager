@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   
   resources :users, only: [:new, :create, :destroy] do
     member do
-      get :schedule
-      get :shift
-      get :skill
+      get :schedules
+      get :shifts
+      get :skills
     end
   end
+  
+  resources :shifts, only: [:new, :create, :edit, :update]
 
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"

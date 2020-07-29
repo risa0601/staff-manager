@@ -1,6 +1,11 @@
 <% if logged_in? %>
-	<%= render "layouts/navbar" %>
 	<h2><%= current_user.name %>さんのマイページ</h2>
+	<ul>
+		<li><%= link_to "マイスケジュール", schedules_user_path(current_user) %></li>
+		<li><%= link_to "マイスキル", skills_user_path(current_user) %></li>
+		<li><%= link_to "シフト", shifts_user_path(current_user) %></li>
+		<li><a href="#">パスワード変更</a></li>
+	</ul>
 <% else %>
 	<div class="center jumbotron">
 		<div class="text-center">

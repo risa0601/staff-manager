@@ -24,6 +24,9 @@ class UsersController < ApplicationController
   end
 
   def shift
+    if logged_in?
+      @shift = current_user.shifts.build
+    end
   end
 
   def destroy
