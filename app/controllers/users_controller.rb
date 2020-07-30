@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  def schedule
+  def schedules
     @user = User.find(params[:id])
     @parties = Party.all
   end
 
-  def skill
+  def skills
   end
 
   def new
@@ -23,10 +23,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def shift
-    if logged_in?
-      @shift = current_user.shifts.build
-    end
+  def shifts
+    @shifts = Shift.all
   end
 
   def destroy
