@@ -1,22 +1,7 @@
-	<h4><%= current_user.name %>さん</h4>
-	<h2>シフト希望</h2>
-	<%= link_to "シフトを提出する", new_shift_path %>
+<h4><%= current_user.name %>さん</h4>
+<h2>シフト希望</h2>
+<%= link_to "シフトを提出する", new_shift_path %>
 	
-	<table class="table">
-		<thead>
-			<tr>
-				<th>日付</th>
-				<th>シフト希望</th>
-				<th>コメント</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @shifts.each do |shift| %>
-			<tr>
-				<td><%= shift.date %></td>
-				<td><%= shift.category %></td>
-				<td><%= shift.content %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+<div class="col-xs-10">
+	<%= render "shifts/shifts", shifts: @shifts %>
+</div>

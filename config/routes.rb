@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :shifts, only: [:new, :create, :edit, :update]
+  resources :shifts, only: [:new, :create]
 
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"

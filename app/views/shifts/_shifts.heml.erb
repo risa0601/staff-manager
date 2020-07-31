@@ -1,0 +1,18 @@
+	<table class="table">
+		<thead>
+			<tr>
+				<th>日付</th>
+				<th>シフト希望</th>
+				<th>コメント</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% shifts.each do |shift| %>
+			<tr>
+				<td><%= shift.date %></td>
+				<td><%= shift.category %></td>
+				<td><%= shift.content %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>

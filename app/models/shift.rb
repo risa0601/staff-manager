@@ -3,4 +3,5 @@ class Shift < ApplicationRecord
   
   validates :date, presence: true
   validates :category, length: { maximum: 255 }
+  validates :content, length: { maximum: 255 }
 end
