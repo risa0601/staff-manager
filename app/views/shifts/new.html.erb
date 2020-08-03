@@ -8,19 +8,24 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>>日付</th>
+					<th>日付</th>
 					<th>シフト希望</th>
-					<th>コメント</th>
+					<th>コメント (時間指定など)</th>
 				</tr>
 			</thead>
 			<tbody>
-				<td><%= f.text_field :date, class: "form-control" %></td>
-				<td><%= f.check_box :category, class: "form-control" %></td>
+				<td><%= f.date_field :date, class: "form-control" %></td>
+				<td>
+					<%= f.radio_button :category, :emputy, checked: true %><%= f.label :category, "〇", {value: :empty, style: "display: inline-block"} %>
+					<%= f.radio_button :category, :full, checked: true %><%= f.label :category, "✕",  {value: :full, style: "display inline-block"}  %>
+					<%= f.radio_button :category, :unknown, checked: true %><%= f.label :category, "？", {value: :unknown, style: "display inline-block"} %>
+				</td>
 				<td><%= f.text_field :content, class: "form-control" %></td>
 			</tbody>
 		</table>
 		<div class="text-right">
-			<%= f.submit "登録", class: "btn btn-primary" %>
+			<%= f.submit "提出", class: "btn btn-primary" %>
 		</div>
+		<% end %>
 	</div>
 </div>

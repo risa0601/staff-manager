@@ -1,7 +1,7 @@
 <h4><%= current_user.name %>さん</h4>
 <h2>シフト希望</h2>
-<%= link_to "シフトを提出する", new_shift_path %>
+<%= link_to "シフトを提出する", new_shift_path, class: "btn btn-info" %>
 	
 <div class="col-xs-10">
-	<%= render "shifts/shifts", shifts: @shifts %>
+  <%= render "shifts/shifts", shifts: @shifts %>
 </div>
