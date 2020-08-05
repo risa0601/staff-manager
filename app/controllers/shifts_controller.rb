@@ -14,5 +14,11 @@ class ShiftsController < ApplicationController
       render :new
     end
   end
+  
+  private
+  
+  def shift_params
+    params.require(:shift).permit(:date, :category, :content)
+  end
 
 end
