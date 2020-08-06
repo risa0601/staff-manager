@@ -4,7 +4,7 @@ class ShiftsController < ApplicationController
   end
 
   def create
-    @shift = Shift.new(shift_params)
+    @shift = current_user.shifts.build(shift_params)
     
     if @shift.save
       flash[:success] = "シフト希望を提出しました"

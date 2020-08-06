@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   def shifts
     @user = User.find(params[:id])
     @shifts = @user.shifts
+    
+    # @shifts = current_user.shifts
   end
 
   def destroy
