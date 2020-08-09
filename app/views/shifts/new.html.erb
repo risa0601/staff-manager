@@ -1,31 +1,30 @@
 <h4><%= current_user.name %>さん</h4>
 <h2>シフト提出</h2>
+<%= form_for @shifts, url: shifts_path, local: true do |form| %>
+  <% @shifts.collection.each do |shift|%>
+    <%= fields_for 'shifts[]', shift do |field| %>
+      <%= field.hidden_field :user_id, value: current_user.id %>
+      <div class="field">
+        <%= field.label :date, "日付" %>
+        <%= field.date_field :date, class: "form-control" %>
+      </div>
 
-<div class="row">
-	<div class="col-xs-offsest-1 col-xs-9">
-		
-		<%= form_for(@shift) do |f| %>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>日付</th>
-					<th>シフト希望</th>
-					<th>コメント (時間指定など)</th>
-				</tr>
-			</thead>
-			<tbody>
-				<td><%= f.date_field :date, class: "form-control" %></td>
-				<td>
-					<%= f.radio_button :category, :〇, checked: true %><%= f.label :category, "〇", {value: :empty, style: "display: inline-block"} %>
-					<%= f.radio_button :category, :✕ %><%= f.label :category, "✕",  {value: :full, style: "display inline-block"}  %>
-					<%= f.radio_button :category, :？ %><%= f.label :category, "？", {value: :unknown, style: "display inline-block"} %>
-				</td>
-				<td><%= f.text_field :content, class: "form-control" %></td>
-			</tbody>
-		</table>
-		<div class="text-right">
-			<%= f.submit "提出", class: "btn btn-primary" %>
-		</div>
-		<% end %>
-	</div>
-</div>
+      <div class="field">
+        <%= field.label :category, "シフト希望" %>
+        <%= field.text_field :category, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= field.label :content, "コメント" %>
+        <%= field.text_field :content, class: "form-control" %>
+      </div>
+      </br>
+    <% end %>
+  <% end %>
+  
+  <div class="actions">
+    <%= form.submit "提出する" %>
+  </div>
+<% end %>
+
+

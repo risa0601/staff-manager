@@ -1,12 +1,11 @@
 class ShiftsController < ApplicationController
   def new
-    @shift = Shift.new
+    @shifts = ShiftsCollection.new
   end
-
+  
   def create
-    @shift = current_user.shifts.build(shift_params)
-    
-    if @shift.save
+    @shifts = ShiftsCollection.new(shifts_params)
+    if @shifts.save
       flash[:success] = "シフト希望を提出しました"
       redirect_to shifts_user_path(current_user)
     else
@@ -14,11 +13,12 @@ class ShiftsController < ApplicationController
       render :new
     end
   end
+
   
   private
   
-  def shift_params
-    params.require(:shift).permit(:date, :category, :content)
+  def shifts_params
+    params.require(:shifts)
   end
 
 end
