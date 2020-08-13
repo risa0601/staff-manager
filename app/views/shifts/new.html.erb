@@ -1,5 +1,6 @@
 <h4><%= current_user.name %>さん</h4>
 <h2>シフト提出</h2>
+
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-sm-8">
@@ -19,19 +20,17 @@
               <tbody>
                 <td><%= field.date_field :date, class: "form-control" %></td>
                 <td>
-                  <%= field.radio_button :category, :〇, checked: true %><%= field.label :category, "〇", {value: :empty, style: "display: inline-block"} %>
-                  <%= field.radio_button :category, :？ %><%= field.label :category, "？", {value: :full, style: "display: inline-block"} %>
-                  <%= field.radio_button :category, :✕ %><%= field.label :category, "✕ " , {value: :unknown , style: "display: inline-block"} %>
+                  <%= field.select :category, {'〇': '〇', '？': '？', '✕': '✕'}, { include_blank: '選択してください'}, { class: 'form-control'} %>
                 </td>
                 <td><%= field.text_field :content, class: "form-control" %></td>
               </tbody>
             </table>
-            <div class="text-right">
-              <%= form.submit "提出" %>
-            </div>
-            
+
           <% end %>
         <% end %>
+        <div class="text-right">
+          <%= form.submit "提出" %>
+        </div>
       <% end %>
     </div>
   </div>
