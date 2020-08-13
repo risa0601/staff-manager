@@ -1,0 +1,19 @@
+          <div class="field">
+            <%= field.label :date, "日付" %>
+            <%= field.date_field :date, class: "form-control" %>
+          </div>
+          <div class="field">
+            <%= field.label :category, "シフト希望" %>
+            <%= field.radio_button :category, :〇 %><%= field.label :category, "〇", {value: :empty} %>
+            <%= field.radio_button :category, :？ %><%= field.label :category, "？", {value: :full} %>
+            <%= field.radio_button :category, :✕ %><%= field.label :category, "✕ " , {value: :unknown } %>
+          </div>
+          <div class="field">
+            <%= field.label :content, "コメント" %>
+            <%= field.text_field :content, class: "form-control" %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="actions">
+        <%= form.submit "提出する" %>
+      </div>

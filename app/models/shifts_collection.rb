@@ -4,7 +4,7 @@ class ShiftsCollection
   extend ActiveModel::Translation
   include ActiveModel::AttributeMethods
   include ActiveModel::Validations
-	SHIFT_NUM = 3
+	SHIFT_NUM = 5
 	attr_accessor :collection
 	
 	# 初期化メソッド
