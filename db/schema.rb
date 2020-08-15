@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20200730080753) do
     t.integer  "staff_no",                         null: false
     t.string   "crypted_password"
     t.string   "salt"
-    t.string   "trip"
-    t.string   "party_type"
-    t.boolean  "admin",            default: false, null: false
+    t.string   "trip"                                               #出張
+    t.string   "party_type"　　　　　　　　　　　　　　　　　　　　#同窓会・二次会
+    t.boolean  "admin",            default: false, null: false　　　#管理者かどうか
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
