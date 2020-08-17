@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get :schedules
       get :shifts
       get :skills
+      get :change_pass
     end
   end
   

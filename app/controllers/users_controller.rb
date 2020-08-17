@@ -33,6 +33,19 @@ class UsersController < ApplicationController
   def destroy
   end
   
+  def change_pass
+    user = current_user
+    user.password = params[:password]
+    user.password_confirmation = params[:password_confirmation]
+    if user.valid?
+      user.save
+      flash[:success] = "パスワードを更新しました"
+    else
+      flash[:danger] = "パスワードを更新できませんでした"
+      render :change_pass
+    end
+  end
+  
   private
   
   def user_params

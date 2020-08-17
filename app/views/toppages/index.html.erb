@@ -4,7 +4,7 @@
 		<li><%= link_to "スケジュール", schedules_user_path(current_user) %></li>
 		<li><%= link_to "スキル", skills_user_path(current_user) %></li>
 		<li><%= link_to "シフト", shifts_user_path(current_user) %></li>
-		<li><a href="#">パスワード変更</a></li>
+		<li><%= link_to "パスワード変更", change_pass_user_path(current_user) %></li>
 	</ul>
 <% else %>
 	<div class="center jumbotron">
