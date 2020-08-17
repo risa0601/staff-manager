@@ -7,6 +7,13 @@ class UsersController < ApplicationController
   def skills
   end
 
+  def shifts
+    @user = User.find(params[:id])
+    @shifts = @user.shifts
+    
+    # @shifts = current_user.shifts
+  end
+
   def new
     @user = User.new
   end
@@ -23,17 +30,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def shifts
-    @user = User.find(params[:id])
-    @shifts = @user.shifts
-    
-    # @shifts = current_user.shifts
-  end
-
   def destroy
   end
   
-  def change_pass
+  def pass_edit
+    @user = User.find(params[:id])
+  end
+  
+  def pass_update
     user = current_user
     user.password = params[:password]
     user.password_confirmation = params[:password_confirmation]
