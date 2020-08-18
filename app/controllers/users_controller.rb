@@ -38,16 +38,21 @@ class UsersController < ApplicationController
   end
   
   def pass_update
-    user = current_user
-    user.password = params[:password]
-    user.password_confirmation = params[:password_confirmation]
-    if user.valid?
-      user.save
-      flash[:success] = "パスワードを更新しました"
+    @user = User.find(params[:id])
+    
+    if current_user == @user
+      @user.password = params[:password]
+      @user.password_confirmation = params[:password_confirmation]
+        if @user.valid?
+          @user.save
+          flash[:success] = "パスワードを更新しました"
+        else
+          flash[:danger] = "パスワードを更新できませんでした"
+          render :change_pass
+        end
     else
-      flash[:danger] = "パスワードを更新できませんでした"
-      render :change_pass
-    end
+      redirect_to root_url
+    end    
   end
   
   private
