@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200730080753) do
+ActiveRecord::Schema.define(version: 20200818090811) do
 
   create_table "having_skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20200730080753) do
     t.string   "station"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.date     "date"
   end
 
   create_table "shifts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -47,15 +46,19 @@ ActiveRecord::Schema.define(version: 20200730080753) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                             null: false
-    t.integer  "staff_no",                         null: false
+    t.string   "name",                                           null: false
+    t.integer  "staff_no",                                       null: false
     t.string   "crypted_password"
     t.string   "salt"
-    t.string   "trip"                                               #出張
-    t.string   "party_type"　　　　　　　　　　　　　　　　　　　　#同窓会・二次会
-    t.boolean  "admin",            default: false, null: false　　　#管理者かどうか
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "trip"
+    t.string   "party_type"
+    t.boolean  "admin",                          default: false, null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.text     "adress",           limit: 65535
+    t.string   "phone"
+    t.text     "memo",             limit: 65535
+    t.text     "position",         limit: 65535
   end
 
   add_foreign_key "having_skills", "skills"

@@ -5,6 +5,9 @@
 		<div class="col-xs-offset-3 col-xs-6">
 			<%= form_for(@user) do |f| %>
 				<%= render "layouts/error_messages", model: f.object %>
+				
+				<!--古いパスワードも入力できるようにする-->
+				
 				<div class="form-group">
 					新しいパスワード<br>
 					<%= f.password_field :password, class: "form-control" %>

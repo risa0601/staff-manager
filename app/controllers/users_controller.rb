@@ -13,6 +13,20 @@ class UsersController < ApplicationController
     
     # @shifts = current_user.shifts
   end
+  
+  def show
+    @user = User.find(params[:id])
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    
+    #編集しようとしているのが管理者であるかのチェック要
+  end
 
   def new
     @user = User.new

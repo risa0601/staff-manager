@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   
   root to: "toppages#index"
   
-  resources :users, only: [:new, :create, :destroy] do
+  resources :users, only: [:show, :edit, :update, :new, :create, :destroy] do
     member do
       get :schedules
       get :shifts
       get :skills
       get :pass_edit
       patch :pass_update
+      put :pass_update
     end
   end
   
