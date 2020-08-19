@@ -8,6 +8,10 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :trip, length: { maximum: 255 }
   validates :party_type, length: { maximum: 255 }
+  validates :adress, length: { maximum: 500 }
+  validates :phone, length: { maximum: 255 }
+  validates :memo ,length: { maximum: 700 }
+  validates :position, length: { maximum: 200 }
   
   has_many :shifts
   has_many :having_skills

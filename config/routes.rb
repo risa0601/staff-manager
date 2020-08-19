@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   root to: "toppages#index"
   
-  resources :users, only: [:show, :edit, :update, :new, :create, :destroy] do
+  resources :users do
     member do
       get :schedules
       get :shifts

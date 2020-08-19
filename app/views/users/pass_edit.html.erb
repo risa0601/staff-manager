@@ -9,11 +9,11 @@
 				<!--古いパスワードも入力できるようにする-->
 				
 				<div class="form-group">
-					新しいパスワード<br>
+					<%= f.label :password, "新しいパスワード" %>
 					<%= f.password_field :password, class: "form-control" %>
 				</div>
 				<div class="form-group">
-					新しいパスワードを再入力<br>
+					<%= f.label :password_confirmation, "新しいパスワードを再入力" %>
 					<%= f.password_field :password_confirmation, class: "form-control" %>
 				</div>
 				<%= f.submit "パスワードを変更する", class: "btn btn-primary" %>

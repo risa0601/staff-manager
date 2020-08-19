@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     # @shifts = current_user.shifts
   end
   
+  def index
+    
+  end
+  
   def show
     @user = User.find(params[:id])
   end
@@ -25,7 +29,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     
-    #編集しようとしているのが管理者であるかのチェック要
+    if @user.update(user_update_params)
+      flash[:success] = "スタッフの情報を更新しました"
+      redirect_to @user
+    else
+      flash.now[:danger] = "スタッフの情報を更新できませんでした"
+      render :edit
+    end
   end
 
   def new
@@ -45,6 +55,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "スタッフ登録を削除しました"
+    redirect_to users_url
   end
   
   def pass_edit
@@ -62,7 +76,7 @@ class UsersController < ApplicationController
           flash[:success] = "パスワードを更新しました"
         else
           flash[:danger] = "パスワードを更新できませんでした"
-          render :change_pass
+          render :pass_edit
         end
     else
       redirect_to root_url
@@ -75,4 +89,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :staff_no, :password, :password_confirmation)
   end
   
+  def user_update_params
+    params.require(:user).permit(:name, :adress, :phone, :trip, :party_type, :position, :memo)
+  end
 end

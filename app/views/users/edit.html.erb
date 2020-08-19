@@ -1,1 +1,39 @@
 <h2>スタッフ情報の編集</h2>
+
+<div class="row">
+	<div class="col-md-6">
+		<%= form_for(@user) do |f| %>
+		<%= render "layouts/error_messages", model: f.object %>
+			<div class="form-group">
+				<%= f.label :name, "氏名" %>
+				<%= f.text_field :name, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :adress, "住所" %>
+				<%= f.text_field :adress, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :phone, "TEL" %>
+				<%= f.text_field :phone, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :trip, "遠方" %>
+				<%= f.text_field :trip, class: "form-control" %>
+			</div>
+			<div class="col-md-6 form-group">
+				<%= f.label :party_type, "区分", class: "control-label" %>
+				<%= f.select :party_type, {'同窓会': '同窓会', '二次会': '二次会', '同窓会・二次会': '同窓会・二次会'}, {}, { class: 'form-control'} %>
+			</div>
+			<div class="col-md-6 form-group">
+				<%= f.label :position, "ポジション(二次会)" %>
+				<%= f.text_field :position, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :memo, "メモ" %>
+				<%= f.text_area :memo, class: "form-control" %>
+			</div>
+			
+			<%= f.submit "更新する", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>
