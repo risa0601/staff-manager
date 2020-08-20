@@ -1,1 +1,20 @@
 <h2>スタッフ一覧</h2>
+
+<% if @users.any? %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>スタッフ№</th>
+				<th>氏名</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td><%= user.staff_no %></td>
+					<td><%= link_to user.name, user %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
