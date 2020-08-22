@@ -10,8 +10,6 @@ class UsersController < ApplicationController
   def shifts
     @user = User.find(params[:id])
     @shifts = @user.shifts
-    
-    # @shifts = current_user.shifts
   end
   
   def index
@@ -59,28 +57,6 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = "スタッフ登録を削除しました"
     redirect_to users_url
-  end
-  
-  def pass_edit
-    @user = User.find(params[:id])
-  end
-  
-  def pass_update
-    @user = User.find(params[:id])
-    
-    if current_user == @user
-      @user.password = params[:password]
-      @user.password_confirmation = params[:password_confirmation]
-        if @user.valid?
-          @user.save
-          flash[:success] = "パスワードを更新しました"
-        else
-          flash[:danger] = "パスワードを更新できませんでした"
-          render :pass_edit
-        end
-    else
-      redirect_to root_url
-    end    
   end
   
   private
