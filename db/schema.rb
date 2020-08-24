@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200824032255) do
+ActiveRecord::Schema.define(version: 20200824064119) do
 
   create_table "having_skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20200824032255) do
     t.string   "station"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "shift_dicisions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "party_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_id"], name: "index_shift_dicisions_on_party_id", using: :btree
+    t.index ["user_id", "party_id"], name: "index_shift_dicisions_on_user_id_and_party_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_shift_dicisions_on_user_id", using: :btree
   end
 
   create_table "shifts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -69,5 +79,7 @@ ActiveRecord::Schema.define(version: 20200824032255) do
 
   add_foreign_key "having_skills", "skills"
   add_foreign_key "having_skills", "users"
+  add_foreign_key "shift_dicisions", "parties"
+  add_foreign_key "shift_dicisions", "users"
   add_foreign_key "shifts", "users"
 end
