@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   
   resources :having_skills, only: [:create, :destroy]
   
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  
 end
