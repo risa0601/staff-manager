@@ -4,14 +4,11 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = [:reset_password]
+Rails.application.config.sorcery.submodules = [:user_activation, :reset_password]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
-  config.user_config do |user|
-    user.reset_password_mailer = UserMailer
-  end
-end
+
   # -- core --
   # What controller action to call for non-authenticated users. You can also
   # override the 'not_authenticated' method of course.
@@ -234,7 +231,7 @@ end
   # config.discord.callback_url = "http://localhost:3000/oauth/callback?provider=discord"
   # config.discord.scope = "email guilds"
   # --- user config ---
-  #config.user_config do |user|　←消した
+  config.user_config do |user|
     # -- core --
     # Specify username attributes, for example: [:username, :email].
     # Default: `[:email]`
@@ -334,7 +331,7 @@ end
     # User activation mailer class.
     # Default: `nil`
     #
-    # user.user_activation_mailer =
+    user.user_activation_mailer = UserMailer
 
     # When true, sorcery will not automatically
     # send the activation details email, and allow you to
@@ -384,7 +381,7 @@ end
     # Password reset mailer class.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+    user.reset_password_mailer = UserMailer
 
     # Reset password email method on your mailer class.
     # Default: `:reset_password_email`
@@ -541,8 +538,10 @@ end
     # Default: `:uid`
     #
     # user.provider_uid_attribute_name =
-
+  end
 
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
-  # config.user_class = "User" ←消した
+  config.user_class = 'User'
+
+end

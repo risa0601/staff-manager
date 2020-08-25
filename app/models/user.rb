@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :phone, length: { maximum: 255 }
   validates :memo ,length: { maximum: 700 }
   validates :position, length: { maximum: 200 }
-  validates :reset_password_token, uniqueness: true, allow_nill: true
+  validates :reset_password_token, presence: true, uniqueness: true
   
   has_many :shifts, dependent: :destroy
   has_many :having_skills, dependent: :destroy
