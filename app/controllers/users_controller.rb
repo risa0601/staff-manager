@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, except: [:destroy]
+  
   def schedules
     @user = User.find(params[:id])
     @parties = Party.all
