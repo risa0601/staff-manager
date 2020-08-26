@@ -2,10 +2,11 @@ class SessionsController < ApplicationController
   skip_before_filter :require_login, except: [:destroy]
   
   def new
+    @user = User.new
   end
 
   def create
-    @user = login(login_params[:staff_no], login_params[:password])
+    @user = login(login_params[:email], login_params[:password])
     if @user
       flash[:success] = "ログインしました"
       redirect_back_or_to(root_path)
@@ -24,7 +25,7 @@ class SessionsController < ApplicationController
   private
   
   def login_params
-    params.require(:session).permit(:staff_no, :password)
+    params.require(:session).permit(:email, :password)
   end
 
 end

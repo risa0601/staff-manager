@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :require_login, except: [:destroy]
   def schedules
     @user = User.find(params[:id])
     @parties = Party.all
@@ -66,6 +67,6 @@ class UsersController < ApplicationController
   end
   
   def user_update_params
-    params.require(:user).permit(:name, :adress, :phone, :trip, :party_type, :position, :memo)
+    params.require(:user).permit(:name, :adress, :phone, :email, :trip, :party_type, :position, :memo)
   end
 end

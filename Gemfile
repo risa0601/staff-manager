@@ -57,3 +57,5 @@ gem 'sorcery'
 gem 'simple_calendar', '~> 2.0'
 
 gem 'font-awesome-sass', '~> 5.4.1'
+
+gem 'rails-i18n'
