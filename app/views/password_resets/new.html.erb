@@ -4,7 +4,8 @@
 			<h1>パスワードリセット申請</h1>
 			<%= form_tag url: password_resets_path, local: true, method: :post do %>
 				<div class="field">
-					<%= text_field_tag :email, "メールアドレス", class: "form-control" %>
+					<%= label_tag :email, "メールアドレス" %>
+					<%= text_field_tag :email, "", class: "form-control" %>
 					<%= submit_tag "送信", class: "btn btn-primary" %>
 				</div>
 			<% end %>
