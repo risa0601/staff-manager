@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, except: [:destroy]
   
   def schedules
     @user = User.find(params[:id])
@@ -57,7 +56,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:success] = "スタッフ登録を削除しました"
+    flash[:success] = "スタッフを削除しました"
     redirect_to users_url
   end
   
