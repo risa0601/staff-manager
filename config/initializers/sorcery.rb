@@ -1,14 +1,11 @@
 # The first thing you need to configure is which modules you need in your app.
 # The default is nothing which will include only core features (password encryption, login/logout).
-#
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
-# :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
-# :magic_login, :external
+# :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
 Rails.application.config.sorcery.submodules = [:user_activation, :reset_password]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
-
   # -- core --
   # What controller action to call for non-authenticated users. You can also
   # override the 'not_authenticated' method of course.
@@ -16,8 +13,8 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.not_authenticated_action =
 
-  # When a non logged-in user tries to enter a page that requires login, save
-  # the URL he wants to reach, and send him there after login, using 'redirect_back_or_to'.
+  # When a non logged in user tries to enter a page that requires login, save
+  # the URL he wanted to reach, and send him there after login, using 'redirect_back_or_to'.
   # Default: `true`
   #
   # config.save_return_to_url =
@@ -49,7 +46,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.session_timeout_from_last_action =
 
-  # Invalidate active sessions. Requires an `invalidate_sessions_before` timestamp column
+  # Invalidate active sessions Requires an `invalidate_sessions_before` timestamp column
   # Default: `false`
   #
   # config.session_timeout_invalidate_active_sessions_enabled =
@@ -61,24 +58,23 @@ Rails.application.config.sorcery.configure do |config|
   # config.controller_to_realm_map =
 
   # -- activity logging --
-  # Will register the time of last user login, every login.
+  # will register the time of last user login, every login.
   # Default: `true`
   #
   # config.register_login_time =
 
-  # Will register the time of last user logout, every logout.
+  # will register the time of last user logout, every logout.
   # Default: `true`
   #
   # config.register_logout_time =
 
-  # Will register the time of last user action, every action.
+  # will register the time of last user action, every action.
   # Default: `true`
   #
   # config.register_last_activity_time =
 
   # -- external --
-  # What providers are supported by this app
-  # i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack, :line].
+  # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack] .
   # Default: `[]`
   #
   # config.external_providers =
@@ -89,19 +85,16 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.ca_file =
 
-  # Linkedin requires r_emailaddress scope to fetch user's email address.
-  # You can skip including the email field if you use an intermediary signup form. (using build_from method).
-  # The r_emailaddress scope is only necessary if you are using the create_from method directly.
+  # For information about LinkedIn API:
+  # - user info fields go to https://developer.linkedin.com/documents/profile-fields
+  # - access permissions go to https://developer.linkedin.com/documents/authentication#granting
   #
   # config.linkedin.key = ""
   # config.linkedin.secret = ""
   # config.linkedin.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=linkedin"
-  # config.linkedin.user_info_mapping = {
-  #   first_name: 'localizedFirstName',
-  #   last_name:  'localizedLastName',
-  #   email:      'emailAddress'
-  # }
-  # config.linkedin.scope = "r_liteprofile r_emailaddress"
+  # config.linkedin.user_info_fields = ['first-name', 'last-name']
+  # config.linkedin.user_info_mapping = {first_name: "firstName", last_name: "lastName"}
+  # config.linkedin.access_permissions = ['r_basicprofile']
   #
   #
   # For information about XING API:
@@ -114,7 +107,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   #
   # Twitter will not accept any requests nor redirect uri containing localhost,
-  # Make sure you use 0.0.0.0:3000 to access your app in development
+  # make sure you use 0.0.0.0:3000 to access your app in development
   #
   # config.twitter.key = ""
   # config.twitter.secret = ""
@@ -166,8 +159,7 @@ Rails.application.config.sorcery.configure do |config|
   # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
-  # The callback URL "can't contain a query string or invalid special characters"
-  # See: https://docs.microsoft.com/en-us/azure/active-directory/active-directory-v2-limitations#restrictions-on-redirect-uris
+  # The callback URL "can't contain a query string or invalid special characters", see: https://docs.microsoft.com/en-us/azure/active-directory/active-directory-v2-limitations#restrictions-on-redirect-uris
   # More information at https://graph.microsoft.io/en-us/docs
   #
   # config.microsoft.key = ""
@@ -198,7 +190,7 @@ Rails.application.config.sorcery.configure do |config|
 
   # For information about JIRA API:
   # https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+OAuth+authentication
-  # To obtain the consumer key and the public key you can use the jira-ruby gem https://github.com/sumoheavy/jira-ruby
+  # to obtain the consumer key and the public key you can use the jira-ruby gem https://github.com/sumoheavy/jira-ruby
   # or run openssl req -x509 -nodes -newkey rsa:1024 -sha1 -keyout rsakey.pem -out rsacert.pem to obtain the public key
   # Make sure you have configured the application link properly
 
@@ -211,7 +203,7 @@ Rails.application.config.sorcery.configure do |config|
   # For information about Salesforce API:
   # https://developer.salesforce.com/signup &
   # https://www.salesforce.com/us/developer/docs/api_rest/
-  # Salesforce callback_url must be https. You can run the following to generate self-signed ssl cert:
+  # Salesforce callback_url must be https. You can run the following to generate self-signed ssl cert
   # openssl req -new -newkey rsa:2048 -sha1 -days 365 -nodes -x509 -keyout server.key -out server.crt
   # Make sure you have configured the application link properly
   # config.salesforce.key = '123123'
@@ -220,236 +212,230 @@ Rails.application.config.sorcery.configure do |config|
   # config.salesforce.scope = "full"
   # config.salesforce.user_info_mapping = {:email => "email"}
 
-  # config.line.key = ""
-  # config.line.secret = ""
-  # config.line.callback_url = "http://mydomain.com:3000/oauth/callback?provider=line"
-
-  # For infromation about Discord API
-  # https://discordapp.com/developers/docs/topics/oauth2
-  # config.discord.key = "xxxxxx"
-  # config.discord.secret = "xxxxxx"
-  # config.discord.callback_url = "http://localhost:3000/oauth/callback?provider=discord"
-  # config.discord.scope = "email guilds"
   # --- user config ---
   config.user_config do |user|
     # -- core --
-    # Specify username attributes, for example: [:username, :email].
+    # specify username attributes, for example: [:username, :email].
     # Default: `[:email]`
     #
-    #user.username_attribute_names = [:staff_no]　←消した
+    # user.username_attribute_names =
 
-    # Change *virtual* password attribute, the one which is used until an encrypted one is generated.
+    # change *virtual* password attribute, the one which is used until an encrypted one is generated.
     # Default: `:password`
     #
     # user.password_attribute_name =
 
-    # Downcase the username before trying to authenticate, default is false
+    # downcase the username before trying to authenticate, default is false
     # Default: `false`
     #
     # user.downcase_username_before_authenticating =
 
-    # Change default email attribute.
+    # change default email attribute.
     # Default: `:email`
     #
     # user.email_attribute_name =
 
-    # Change default crypted_password attribute.
+    # change default crypted_password attribute.
     # Default: `:crypted_password`
     #
     # user.crypted_password_attribute_name =
 
-    # What pattern to use to join the password with the salt
+    # what pattern to use to join the password with the salt
     # Default: `""`
     #
     # user.salt_join_token =
 
-    # Change default salt attribute.
+    # change default salt attribute.
     # Default: `:salt`
     #
     # user.salt_attribute_name =
 
-    # How many times to apply encryption to the password.
+    # how many times to apply encryption to the password.
     # Default: 1 in test env, `nil` otherwise
     #
     user.stretches = 1 if Rails.env.test?
 
-    # Encryption key used to encrypt reversible encryptions such as AES256.
+    # encryption key used to encrypt reversible encryptions such as AES256.
     # WARNING: If used for users' passwords, changing this key will leave passwords undecryptable!
     # Default: `nil`
     #
     # user.encryption_key =
 
-    # Use an external encryption class.
+    # use an external encryption class.
     # Default: `nil`
     #
     # user.custom_encryption_provider =
 
-    # Encryption algorithm name. See 'encryption_algorithm=' for available options.
+    # encryption algorithm name. See 'encryption_algorithm=' for available options.
     # Default: `:bcrypt`
     #
     # user.encryption_algorithm =
 
-    # Make this configuration inheritable for subclasses. Useful for ActiveRecord's STI.
+    # make this configuration inheritable for subclasses. Useful for ActiveRecord's STI.
     # Default: `false`
     #
     # user.subclasses_inherit_config =
 
     # -- remember_me --
     # How long in seconds the session length will be
-    # Default: `60 * 60 * 24 * 7`
+    # Default: `604800`
     #
     # user.remember_me_for =
 
-    # When true, sorcery will persist a single remember me token for all
-    # logins/logouts (to support remembering on multiple browsers simultaneously).
+    # when true sorcery will persist a single remember me token for all
+    # logins/logouts (supporting remembering on multiple browsers simultaneously).
     # Default: false
     #
     # user.remember_me_token_persist_globally =
 
     # -- user_activation --
-    # The attribute name to hold activation state (active/pending).
+    # the attribute name to hold activation state (active/pending).
     # Default: `:activation_state`
     #
     # user.activation_state_attribute_name =
 
-    # The attribute name to hold activation code (sent by email).
+    # the attribute name to hold activation code (sent by email).
     # Default: `:activation_token`
     #
     # user.activation_token_attribute_name =
 
-    # The attribute name to hold activation code expiration date.
+    # the attribute name to hold activation code expiration date.
     # Default: `:activation_token_expires_at`
     #
     # user.activation_token_expires_at_attribute_name =
 
-    # How many seconds before the activation code expires. nil for never expires.
+    # how many seconds before the activation code expires. nil for never expires.
     # Default: `nil`
     #
     # user.activation_token_expiration_period =
 
-    # REQUIRED:
-    # User activation mailer class.
+    # your mailer class. Required.
     # Default: `nil`
     #
     user.user_activation_mailer = UserMailer
 
-    # When true, sorcery will not automatically
-    # send the activation details email, and allow you to
-    # manually handle how and when the email is sent.
+    # when true sorcery will not automatically
+    # email activation details and allow you to
+    # manually handle how and when email is sent.
     # Default: `false`
     #
     # user.activation_mailer_disabled =
 
-    # Method to send email related
+    # method to send email related
     # options: `:deliver_later`, `:deliver_now`, `:deliver`
     # Default: :deliver (Rails version < 4.2) or :deliver_now (Rails version 4.2+)
     #
     # user.email_delivery_method =
 
-    # Activation needed email method on your mailer class.
+    # activation needed email method on your mailer class.
     # Default: `:activation_needed_email`
     #
     # user.activation_needed_email_method_name =
 
-    # Activation success email method on your mailer class.
+    # activation success email method on your mailer class.
     # Default: `:activation_success_email`
     #
     # user.activation_success_email_method_name =
 
-    # Do you want to prevent users who did not activate by email from logging in?
+    # do you want to prevent or allow users that did not activate by email to login?
     # Default: `true`
     #
     # user.prevent_non_active_users_to_login =
 
     # -- reset_password --
-    # Password reset token attribute name.
+    # reset password code attribute name.
     # Default: `:reset_password_token`
     #
     # user.reset_password_token_attribute_name =
 
-    # Password token expiry attribute name.
+    # expires at attribute name.
     # Default: `:reset_password_token_expires_at`
     #
     # user.reset_password_token_expires_at_attribute_name =
 
-    # When was password reset email sent. Used for hammering protection.
+    # when was email sent, used for hammering protection.
     # Default: `:reset_password_email_sent_at`
     #
     # user.reset_password_email_sent_at_attribute_name =
 
-    # REQUIRED:
-    # Password reset mailer class.
+    # mailer class. Needed.
     # Default: `nil`
     #
     user.reset_password_mailer = UserMailer
 
-    # Reset password email method on your mailer class.
+    # reset password email method on your mailer class.
     # Default: `:reset_password_email`
     #
     # user.reset_password_email_method_name =
 
-    # When true, sorcery will not automatically
-    # send the password reset details email, and allow you to
-    # manually handle how and when the email is sent
+    # when true sorcery will not automatically
+    # email password reset details and allow you to
+    # manually handle how and when email is sent
     # Default: `false`
     #
     # user.reset_password_mailer_disabled =
 
-    # How many seconds before the reset request expires. nil for never expires.
+    # how many seconds before the reset request expires. nil for never expires.
     # Default: `nil`
     #
     # user.reset_password_expiration_period =
 
-    # Hammering protection: how long in seconds to wait before allowing another email to be sent.
+    # hammering protection, how long in seconds to wait before allowing another email to be sent.
     # Default: `5 * 60`
     #
     # user.reset_password_time_between_emails =
-
-    # Access counter to a reset password page attribute name
+    
+    # access counter to a reset password page attribute name
     # Default: `:access_count_to_reset_password_page`
     #
     # user.reset_password_page_access_count_attribute_name =
 
     # -- magic_login --
-    # Magic login code attribute name.
+    # magic login code attribute name.
     # Default: `:magic_login_token`
     #
     # user.magic_login_token_attribute_name =
 
-    # Magic login expiry attribute name.
+
+    # expires at attribute name.
     # Default: `:magic_login_token_expires_at`
     #
     # user.magic_login_token_expires_at_attribute_name =
 
-    # When was magic login email sent — used for hammering protection.
+
+    # when was email sent, used for hammering protection.
     # Default: `:magic_login_email_sent_at`
     #
     # user.magic_login_email_sent_at_attribute_name =
 
-    # REQUIRED:
-    # Magic login mailer class.
+
+    # mailer class. Needed.
     # Default: `nil`
     #
     # user.magic_login_mailer_class =
 
-    # Magic login email method on your mailer class.
+
+    # magic login email method on your mailer class.
     # Default: `:magic_login_email`
     #
     # user.magic_login_email_method_name =
 
-    # When true, sorcery will not automatically
-    # send magic login details email, and allow you to
-    # manually handle how and when the email is sent
+
+    # when true sorcery will not automatically
+    # email magic login details and allow you to
+    # manually handle how and when email is sent
     # Default: `true`
     #
     # user.magic_login_mailer_disabled =
 
-    # How many seconds before the request expires. nil for never expires.
+
+    # how many seconds before the request expires. nil for never expires.
     # Default: `nil`
     #
     # user.magic_login_expiration_period =
 
-    # Hammering protection: how long in seconds to wait before allowing another email to be sent.
+
+    # hammering protection, how long in seconds to wait before allowing another email to be sent.
     # Default: `5 * 60`
     #
     # user.magic_login_time_between_emails =
@@ -465,12 +451,12 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.lock_expires_at_attribute_name =
 
-    # How many failed logins are allowed.
+    # How many failed logins allowed.
     # Default: `50`
     #
     # user.consecutive_login_retries_amount_limit =
 
-    # How long the user should be banned, in seconds. 0 for permanent.
+    # How long the user should be banned. in seconds. 0 for permanent.
     # Default: `60 * 60`
     #
     # user.login_lock_time_period =
@@ -485,17 +471,16 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.unlock_token_email_method_name =
 
-    # When true, sorcery will not automatically
-    # send email with the unlock token
+    # when true sorcery will not automatically
+    # send email with unlock token
     # Default: `false`
     #
     # user.unlock_token_mailer_disabled = true
 
-    # REQUIRED:
-    # Unlock token mailer class.
+    # Unlock token mailer class
     # Default: `nil`
     #
-    # user.unlock_token_mailer =
+    # user.unlock_token_mailer = UserMailer
 
     # -- activity logging --
     # Last login attribute name.
@@ -513,7 +498,7 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.last_activity_at_attribute_name =
 
-    # How long since user's last activity will they be considered logged out?
+    # How long since last activity is the user defined logged out?
     # Default: `10 * 60`
     #
     # user.activity_timeout =
@@ -524,17 +509,17 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.authentications_class =
 
-    # User's identifier in the `authentications` class.
+    # User's identifier in authentications class.
     # Default: `:user_id`
     #
     # user.authentications_user_id_attribute_name =
 
-    # Provider's identifier in the `authentications` class.
+    # Provider's identifier in authentications class.
     # Default: `:provider`
     #
     # user.provider_attribute_name =
 
-    # User's external unique identifier in the `authentications` class.
+    # User's external unique identifier in authentications class.
     # Default: `:uid`
     #
     # user.provider_uid_attribute_name =
@@ -543,5 +528,4 @@ Rails.application.config.sorcery.configure do |config|
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
   config.user_class = 'User'
-
 end

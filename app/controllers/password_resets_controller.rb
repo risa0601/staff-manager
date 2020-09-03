@@ -39,7 +39,7 @@ class PasswordResetsController < ApplicationController
     end
   end
   
-  pivate
+  private
   
   def set_token_user_from_params?
     # postされてきた値を取得

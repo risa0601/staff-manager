@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = login(login_params[:email], login_params[:password])
+    @user = login(params[:email], params[:password])
     if @user
       flash[:success] = "ログインしました"
       redirect_back_or_to(root_path)
@@ -20,12 +20,6 @@ class SessionsController < ApplicationController
     logout
     flash[:success] = "ログアウトしました"
     redirect_to root_url
-  end
-  
-  private
-  
-  def login_params
-    params.require(:session).permit(:email, :password)
   end
 
 end
