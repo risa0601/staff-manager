@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   
+  resources :skills, only: [:index, :new, :create, :destroy]
+  
   resources :having_skills, only: [:create, :destroy]
   
   resources :password_resets, only: [:new, :create, :edit, :update]
