@@ -59,3 +59,7 @@ gem 'simple_calendar', '~> 2.0'
 gem 'font-awesome-sass', '~> 5.4.1'
 
 gem 'rails-i18n'
+
+group :development do
+  gem 'letter_opener_web'
+end
