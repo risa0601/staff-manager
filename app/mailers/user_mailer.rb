@@ -13,4 +13,17 @@ class UserMailer < ApplicationMailer
     mail(to: user.email,
          subject: "パスワードリセット")
   end
+  
+  def activation_needed_email(user)
+    @user = user
+    @url = "http://localhost:3000/users/#{user.activation_token}/activate"
+    mail(to:user.email, subject: "【Staff-Manager】アカウント登録確認")
+  end
+  
+  def activation_success_email(user)
+    @user = user
+    @url = "http://localhost:3000/login"
+    mail(to: user.email, subject: "【Staff-Manager】アカウント登録完了")
+  end
+
 end

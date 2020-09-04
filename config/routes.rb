@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get :schedules
       get :shifts
       get :skills
+      get :active
     end
   end
   
@@ -20,5 +21,7 @@ Rails.application.routes.draw do
   resources :having_skills, only: [:create, :destroy]
   
   resources :password_resets, only: [:new, :create, :edit, :update]
+  
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   
 end

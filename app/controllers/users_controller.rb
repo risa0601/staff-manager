@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create, :activate]
   
   def schedules
     @user = User.find(params[:id])
@@ -50,6 +51,16 @@ class UsersController < ApplicationController
     else
       flash[:danger] = "スタッフの登録に失敗しました"
       render :new
+    end
+  end
+  
+  def active
+    if (@user = User.load_from_activation_token(params[:id]))
+      @user.activate!
+      flash[:success] = "メールアドレス認証が完了しました"
+      redirect_to login_url
+    else
+      not_authenticated
     end
   end
 
