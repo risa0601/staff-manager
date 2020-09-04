@@ -1,2 +1,19 @@
-<h1>Skills#new</h1>
-<p>Find me in app/views/skills/new.html.erb</p>
+<h2>スキル登録</h2>
+
+<div class="row">
+	<div class="col-xs-offset-3 col-xs-6">
+		
+		<%= form_for(@skill) do |f| %>
+			<%= render "layouts/error_messages", model: f.object %>
+			
+			<div class="form-group">
+				<%= f.label :skill_name, "スキル" %>
+				<%= f.text_field :skill_name, class: "form-control" %>
+			</div>
+			
+			<%= f.submit "登録", class: "btn btn-primary btn-block" %>
+			
+		<% end %>
+		
+	</div>
+</div>
