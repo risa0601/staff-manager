@@ -1,6 +1,31 @@
-<h4><%= current_user.name %>さん</h4>
-<h2>スキル</h2>
+<h2>スタッフ詳細</h2>
+<%= link_to "一覧に戻る", users_path %>
+<%= link_to "編集する", edit_user_path(@user) %>
+<%= link_to "削除する", @user, method: :delete, date: { confirm: "本当に削除してよろしいですか？"} %>
 
-<div class="col-xs-10">
-  <%= render "skills/skills", skills: @skills %>
+<div class="row">
+	<aside class="col-md-5">
+		
+		<p>スタッフ№ ： <%= @user.staff_no %></p>
+		<p>氏名 ： <%= @user.name %></p>
+		<p>住所 ： <%= @user.adress %></p>
+		<p>TEL ： <%= @user.phone %></p>
+		<p>メールアドレス : <%= @user.email %></p>
+		<p>遠方 ： <%= @user.trip %></p>
+		<p>区分 ： <%= @user.party_type %></p>
+		<p>ポジション(二次会) ： <%= @user.position %></p>
+		<p>メモ</p>
+		<p><%= @user.memo %></p>
+		
+	</aside>
+	<div class="col-md-7">
+		<!--タブ切り替えで現場、シフト希望、スキルを表示-->
+		
+		<ul class="nav nav-tabs nav-justified">
+			<li class="<%= "active" if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>先現場<% end %></li>
+			<li class="<%= "active" if current_page?(shifts_user_path(@user)) %>"><%= link_to shifts_user_path(@user) do %>シフト希望<% end %></li>
+			<li class="<%= "active" if current_page?(skills_user_path(@user)) %>"><%= link_to skills_user_path(@user) do %>スキル<% end %></li>
+		</ul>
+		<%= render "skills/skills", skills: @skills %>
+	</div>
 </div>

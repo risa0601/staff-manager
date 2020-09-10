@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   
   resources :users do
     member do
-      get :schedules
       get :shifts
       get :skills
       get :active

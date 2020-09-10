@@ -22,10 +22,10 @@
 		<!--タブ切り替えで現場、シフト希望、スキルを表示-->
 		
 		<ul class="nav nav-tabs nav-justified">
-			<li><a href="#">先現場</a></li>
+			<li class="<%= "active" if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>先現場<% end %></li>
 			<li class="<%= "active" if current_page?(shifts_user_path(@user)) %>"><%= link_to shifts_user_path(@user) do %>シフト希望<% end %></li>
-			<li><a href="#">スキル</a></li>
+			<li class="<%= "active" if current_page?(skills_user_path(@user)) %>"><%= link_to skills_user_path(@user) do %>スキル<% end %></li>
 		</ul>
-		<!--ここに先現場のパーシャルをrenderする-->
+		<%= render "parties/parties", parties: @parties %>
 	</div>
 </div>

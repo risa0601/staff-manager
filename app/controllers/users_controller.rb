@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :activate]
-  
-  def schedules
-    @user = User.find(params[:id])
-    @parties = @user.parties.order(:party_start)
-  end
 
   def skills
     @user = User.find(params[:id])
@@ -22,6 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @parties = @user.parties.order(:party_start)
   end
   
   def edit

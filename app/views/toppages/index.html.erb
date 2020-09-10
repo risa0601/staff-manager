@@ -1,9 +1,9 @@
 <% if logged_in? %>
 	<h2><%= current_user.name %>さんのマイページ</h2>
 	<ul>
-		<li><%= link_to "スケジュール", schedules_user_path(current_user) %></li>
-		<li><%= link_to "スキル", skills_user_path(current_user) %></li>
-		<li><%= link_to "シフト", shifts_user_path(current_user) %></li>
+		<li><%= link_to "スケジュール", party_path(current_user) %></li>
+		<li><%= link_to "スキル", skill_path(current_user) %></li>
+		<li><%= link_to "シフト", shift_path(current_user) %></li>
 	</ul>
 <% else %>
 	<div class="center jumbotron">
