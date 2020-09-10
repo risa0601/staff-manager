@@ -2,6 +2,11 @@ class SkillsController < ApplicationController
   def index
     @skills = Skill.all
   end
+  
+  def show
+   @user = User.find(params[:id])
+    @skills = @user.skills
+  end
 
   def new
     @skill = Skill.new

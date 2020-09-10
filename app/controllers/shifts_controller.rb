@@ -1,4 +1,10 @@
 class ShiftsController < ApplicationController
+  
+  def show
+    @user = User.find(params[:id])
+    @shifts = @user.shifts.order(:date)
+  end
+  
   def new
     @shifts = ShiftsCollection.new
   end

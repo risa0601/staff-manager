@@ -12,15 +12,15 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :shifts, only: [:new, :create]
+  resources :shifts, only: [:show, :new, :create]
 
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   
-  resources :skills, only: [:index, :new, :create, :destroy]
+  resources :skills, only: [:show, :index, :new, :create, :destroy]
   
-  resources :parties, only: [:index, :new, :create, :destroy]
+  resources :parties, only: [:show, :index, :new, :create, :destroy]
   
   resources :having_skills, only: [:create, :destroy]
   

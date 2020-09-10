@@ -2,6 +2,11 @@ class PartiesController < ApplicationController
   def index
     @parties = Party.all.order(:party_start)
   end
+  
+  def show
+    @user = User.find(params[:id])
+    @parties = @user.parties.order(:party_start)
+  end
 
   def new
     @party = Party.new
