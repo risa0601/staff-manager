@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def shifts
     @user = User.find(params[:id])
-    @shifts = @user.shifts
+    @shifts = @user.shifts.order(:date)
   end
   
   def index

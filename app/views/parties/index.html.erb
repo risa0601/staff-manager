@@ -1,6 +1,6 @@
 <h2>現場一覧</h2>
 
-<%= link_to "現場を登録", new_skill_path, class: "btn btn-info" %>
+<%= link_to "現場を登録", new_party_path, class: "btn btn-info" %>
 
 <% if @parties.any? %>
 	<table class="table table-striped">
@@ -13,9 +13,9 @@
 		<tbody>
 			<% @parties.each do |party| %>
 				<tr>
-					<td><%= party.patry_start %></td>
+					<td><%= party.party_start %></td>
 					<td><%= party.station %></td>
-					<td><%= link_to "削除", @party, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
+					<td><%= link_to "削除", party_path(party), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
 				</tr>
 			<% end %>
 		</tbody>

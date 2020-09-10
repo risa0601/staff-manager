@@ -1,6 +1,6 @@
 class PartiesController < ApplicationController
   def index
-    @parties = Party.all
+    @parties = Party.all.order(:party_start)
   end
 
   def new
@@ -24,5 +24,11 @@ class PartiesController < ApplicationController
     @party.destroy
     flash[:success] = "現場を削除しました"
     redirect_to parties_url
+  end
+  
+  private
+  
+  def party_params
+    params.require(:party).permit(:party_start, :station)
   end
 end
