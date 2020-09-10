@@ -15,8 +15,7 @@
 				<tr>
 					<td><%= skill.id %></td>
 					<td><%= skill.skill_name %></td>
-					<td><%= link_to "削除", @skill, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
-					<!--<td><%= link_to "削除", skill_path(skill), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>-->
+					<td><%= link_to "削除", skill_path(skill), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
 				</tr>
 			<% end %>
 		</tbody>

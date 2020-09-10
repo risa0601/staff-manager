@@ -3,10 +3,12 @@ class UsersController < ApplicationController
   
   def schedules
     @user = User.find(params[:id])
-    @parties = Party.all
+    @parties = @user.parties.order(:party_start)
   end
 
   def skills
+    @user = User.find(params[:id])
+    @skills = @user.skills
   end
 
   def shifts
