@@ -17,8 +17,10 @@ class User < ApplicationRecord
   validates :position, length: { maximum: 200 }
   
   has_many :shifts, dependent: :destroy
+  
   has_many :having_skills, dependent: :destroy
   has_many :skills, through: :having_skills
+  
   has_many :shift_dicisions, dependent: :destroy
   has_many :parties, through: :shift_dicisions
   
