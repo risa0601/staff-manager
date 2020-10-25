@@ -19,10 +19,10 @@ class User < ApplicationRecord
   has_many :shifts, dependent: :destroy
   
   has_many :having_skills, dependent: :destroy
-  has_many :skills, through: :having_skills
+  has_many :skills, through: :having_skills, source: :skill
   
   has_many :shift_dicisions, dependent: :destroy
-  has_many :parties, through: :shift_dicisions
+  has_many :parties, through: :shift_dicisions, source: :party
   
   
   def have(skill)

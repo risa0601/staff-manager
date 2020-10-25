@@ -13,7 +13,7 @@ class ShiftsController < ApplicationController
     @shifts = ShiftsCollection.new(shifts_params)
     if @shifts.save
       flash[:success] = "シフト希望を提出しました"
-      redirect_to shifts_user_path(current_user)
+      redirect_to shift_path(current_user)
     else
       flash[:danger] = "シフト希望を提出できませんでした"
       render :new

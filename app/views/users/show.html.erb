@@ -1,7 +1,7 @@
 <h2>スタッフ詳細</h2>
 <%= link_to "一覧に戻る", users_path %>
 <%= link_to "編集する", edit_user_path(@user) %>
-<%= link_to "削除する", @user, method: :delete, date: { confirm: "本当に削除してよろしいですか？"} %>
+<%= link_to "削除する", @user, method: :delete, data: { confirm: "本当に削除してよろしいですか？"} %>
 
 <div class="row">
 	<aside class="col-md-5">
