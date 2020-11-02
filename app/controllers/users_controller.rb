@@ -13,6 +13,12 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    if params[:staff_no].present?
+      @users = @user.get_by_staff_no params[:staff_no]
+    end
+    if params[:name].present?
+      @users = @users.get_by_name params[:name]
+    end
   end
   
   def show

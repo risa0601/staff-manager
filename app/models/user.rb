@@ -51,4 +51,12 @@ class User < ApplicationRecord
     self.shift_dicisions.include?(party)
   end
   
+  scope :get_by_staff_no, ->(staff_no) {
+    where("staff_no like ?", "%#{staff_no}%")
+  }
+  
+  scope :get_by_name, ->(name) {
+    where("name like ?", "%#{name}%")
+  }
+
 end
