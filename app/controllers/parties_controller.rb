@@ -31,6 +31,11 @@ class PartiesController < ApplicationController
     redirect_to parties_url
   end
   
+  
+  def tehai
+    @party = Party.find(params[:id])
+  end
+  
   private
   
   def party_params

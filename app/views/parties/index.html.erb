@@ -16,6 +16,7 @@
 					<td><%= party.party_start %></td>
 					<td><%= party.station %></td>
 					<td><%= link_to "削除", party_path(party), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
+					<td><%= link_to "手配", tehai_party_path(party) %></td>
 				</tr>
 			<% end %>
 		</tbody>

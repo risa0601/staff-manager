@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   
   resources :skills, only: [:show, :index, :new, :create, :destroy]
   
-  resources :parties, only: [:show, :index, :new, :create, :destroy]
+  resources :parties, only: [:show, :index, :new, :create, :destroy,] do
+    member do
+      get :tehai
+    end
+  end
   
   resources :having_skills, only: [:create, :destroy]
   
