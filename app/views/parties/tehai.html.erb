@@ -19,3 +19,21 @@
 		</table>
 	</aside>
 </div>
+<div class="row">
+	<aside class="col-md-5">
+		<table class="table">
+			<thead>
+				<th>スタッフ№</th>
+				<th>氏名</th>
+			</thead>
+			<tbody>
+				<% @users.each do |user| %>
+					<tr>
+						<td><%= user.staff_no %></td>
+						<td><%= user.name %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</aside>
+</div>
