@@ -34,6 +34,7 @@ class PartiesController < ApplicationController
   
   def tehai
     @party = Party.find(params[:id])
+    @users = User.all
   end
   
   private
