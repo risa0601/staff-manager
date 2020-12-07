@@ -23,15 +23,19 @@
 			<thead>
 				<th>スタッフ№</th>
 				<th>氏名</th>
+				<th>手配</th>
 			</thead>
 			<tbody>
 				<% @users.each do |user| %>
 					<tr>
 						<td><%= user.staff_no %></td>
 						<td><%= user.name %></td>
+						<td><%= check_box_tag :tehai %></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
+		<%= button_to "更新", {controller: "parties", action: "tehai"}, {method: :get} %>
 	</aside>
 </div>
+

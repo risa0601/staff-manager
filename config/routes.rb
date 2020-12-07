@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :parties, only: [:show, :index, :new, :create, :destroy,] do
     member do
       get :tehai
+      post :tehai_create
     end
   end
   

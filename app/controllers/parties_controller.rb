@@ -37,6 +37,16 @@ class PartiesController < ApplicationController
     @users = User.all
   end
   
+  def tehai_create
+    @tehai = Shift_dicision.new
+    
+    if @tehai.save
+      redirect_to :back
+    else
+      render :tehai
+    end
+  end
+  
   private
   
   def party_params
