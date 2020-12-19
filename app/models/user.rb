@@ -35,7 +35,7 @@ class User < ApplicationRecord
   end
   
   def have?(skill)
-    self.having_skills.include?(skill)
+    self.skills.include?(skill)
   end
   
   def work(party)
@@ -48,7 +48,7 @@ class User < ApplicationRecord
   end
   
   def work?(party)
-    self.shift_dicisions.include?(party)
+    self.parties.include?(party)
   end
   
   scope :get_by_staff_no, ->(staff_no) {

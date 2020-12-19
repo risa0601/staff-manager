@@ -22,11 +22,12 @@ Rails.application.routes.draw do
   resources :parties, only: [:show, :index, :new, :create, :destroy,] do
     member do
       get :tehai
-      post :tehai_create
     end
   end
   
   resources :having_skills, only: [:create, :destroy]
+  
+  resources :shift_dicisions, only: [:create, :destroy]
   
   resources :password_resets, only: [:new, :create, :edit, :update]
   

@@ -30,12 +30,25 @@
 					<tr>
 						<td><%= user.staff_no %></td>
 						<td><%= user.name %></td>
-						<td><%= check_box_tag :tehai %></td>
+						<td>
+							<% if user.work?(@party) %>
+								<%= form_for(user.shift_dicisions.find_by(party_id: party.id), html: { method: :delete }) do |f| %>
+									<%= hidden_field_tag :user_id, user.id %>
+									<%= hidden_field_tag :party_id, @party.id %>
+									<%= f.submit "現場から外す", class: "btn btn-danger" %>
+								<% end %>
+							<% else %>
+								<%= form_for(user.shift_dicisions.build) do |f| %>
+									<%= hidden_field_tag :user_id, user.id %>
+									<%= hidden_field_tag :party_id, @party.id %>
+									<%= f.submit "手配する", class: "btn btn-primary" %>
+								<% end %>
+							<% end %>
+						</td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
-		<%= button_to "更新", {controller: "parties", action: "tehai"}, {method: :get} %>
+
 	</aside>
 </div>
-
