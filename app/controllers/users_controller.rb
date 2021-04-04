@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     end
   end
   
-  def active
+  def activate
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
       flash[:success] = "メールアドレス認証が完了しました"

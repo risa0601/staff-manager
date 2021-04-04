@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     member do
       get :shifts
       get :skills
-      get :active
+      get :activate
     end
   end
   
