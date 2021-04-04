@@ -2,6 +2,7 @@
 <%= link_to "一覧に戻る", users_path %>
 <%= link_to "編集する", edit_user_path(@user) %>
 <%= link_to "削除する", @user, method: :delete, date: { confirm: "本当に削除してよろしいですか？"} %>
+<%= link_to "スキルを登録・削除", skill_user_path %>
 
 <div class="row">
 	<aside class="col-md-5">

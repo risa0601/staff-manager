@@ -35,7 +35,6 @@ class PartiesController < ApplicationController
   def tehai
     @party = Party.find(params[:id])
     @users = User.all
-    @shiftDicision = ShiftDicision.new
   end
   
   

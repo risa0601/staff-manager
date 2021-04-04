@@ -1,0 +1,32 @@
+<h2><%= @user.name %>さんのスキルを登録</h2>
+<%= link_to "スタッフ詳細に戻る", user_path %>
+
+<div class="row">
+  <table class="table">
+		<thead>
+      <th>スキル</th>
+    </thead>
+    <tbody>
+      <% @skills.each do |skill| %>
+        <tr>
+          <td><%= skill.skill_name %></td>
+          <td>
+            <% if @user.have?(skill) %>
+              <%= form_for(@user.having_skills.find_by(skill_id: skill.id), html: { method: :delete }) do |f| %>
+                <%= hidden_field_tag :user_id, @user.id %>
+                <%= hidden_field_tag :skill_id, skill.id %>
+                <%= f.submit "登録を外す", class: "btn btn-danger" %>
+              <% end %>
+            <% else %>
+              <%= form_for(@user.having_skills.build) do |f| %>
+                <%= hidden_field_tag :user_id, @user.id %>
+                <%= hidden_field_tag :skill_id, skill.id %>
+                <%= f.submit "登録する", class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+			<% end %>
+    </tbody>
+	</table>
+</div>

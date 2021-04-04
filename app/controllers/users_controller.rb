@@ -68,6 +68,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def skill
+    @user = User.find(params[:id])
+    @skills = Skill.all
+  end
+
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy

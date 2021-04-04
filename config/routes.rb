@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get :shifts
       get :skills
       get :activate
+      get :skill
     end
   end
   
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   
-  resources :skills, only: [:show, :index, :new, :create, :destroy]
+  resources :skills, only: [:show, :index, :new, :create, :destroy] 
   
   resources :parties, only: [:show, :index, :new, :create, :destroy,] do
     member do
