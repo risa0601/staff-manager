@@ -19,9 +19,9 @@
 								<li><%= link_to "スケジュール", party_path(current_user) %></li>
 								<li><%= link_to "スキル", skill_path(current_user) %></li>
 								<li><%= link_to "シフト", shift_path(current_user) %></li>
-								<li><%= link_to "ユーザ登録", new_user_path %></li>
-								<li><%= link_to "現場登録", new_party_path %></li>
-								<li><%= link_to "スキル登録", new_skill_path %></li>
+								<li><%= link_to "ユーザ一覧", users_path %></li>
+								<li><%= link_to "現場一覧", parties_path %></li>
+								<li><%= link_to "スキル一覧", skills_path %></li>
 								<li role="separator" class="divider"></li>
 								<li><%= link_to "ログアウト", logout_path, method: :delete %></li>
 							</ul>

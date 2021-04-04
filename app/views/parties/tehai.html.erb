@@ -32,7 +32,7 @@
 						<td><%= user.name %></td>
 						<td>
 							<% if user.work?(@party) %>
-								<%= form_for(user.shift_dicisions.find_by(party_id: party.id), html: { method: :delete }) do |f| %>
+								<%= form_for(user.shift_dicisions.find_by(party_id: @party.id), html: { method: :delete }) do |f| %>
 									<%= hidden_field_tag :user_id, user.id %>
 									<%= hidden_field_tag :party_id, @party.id %>
 									<%= f.submit "現場から外す", class: "btn btn-danger" %>

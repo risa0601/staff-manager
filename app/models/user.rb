@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
   
   def unhave(skill)
-    have = self.haves.find_by(skill_id: skill.id)
+    have = self.having_skills.find_by(skill_id: skill.id)
     have.destroy if have
   end
   
@@ -43,7 +43,7 @@ class User < ApplicationRecord
   end
   
   def unwork(party)
-    work = self.works.find_by(party_id: party.id)
+    work = self.shift_dicisions.find_by(party_id: party.id)
     work.destroy if work
   end
   
