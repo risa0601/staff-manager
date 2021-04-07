@@ -6,11 +6,11 @@
         <%= form_tag login_path, :method => :post do %>
           <div class="field form-group">
             <%= label_tag :email, "メールアドレス" %>
-            <%= text_field_tag :email, params[:email], class: "form-control" %>
+            <%= text_field_tag :email, params[:email], value: "test10@test.com", class: "form-control" %>
           </div>
           <div class="field form-group">
             <%= label_tag :password, "パスワード" %>
-            <%= password_field_tag :password,'', class: "form-control" %>
+            <%= password_field_tag :password,'', value: "test10", class: "form-control" %>
           </div>
           <div class="actions text-center">
             <%= button_tag type: 'submit', class:'btn btn-o button-session' do %>
